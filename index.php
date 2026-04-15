@@ -1,96 +1,129 @@
-<?php include 'db.php'; ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Ordering System</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StreetStyle Shop - Sneakers, Skateboards & Streetwear</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>StreetStyle</h1>
+                </div>
+                <nav class="nav">
+                    <a href="index.html" class="nav-link active">Home</a>
+                    <a href="shop.html" class="nav-link">Shop</a>
+                    <a href="bundles.html" class="nav-link">Bundles</a>
+                    <a href="sales.html" class="nav-link">Sale</a>
+                    <a href="cart.html" class="nav-link cart-link">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                </nav>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <div class="mobile-nav" id="mobileNav">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="shop.html" class="nav-link">Shop</a>
+                <a href="bundles.html" class="nav-link">Bundles</a>
+                <a href="sales.html" class="nav-link">Sale</a>
+                <a href="cart.html" class="nav-link">Cart</a>
+            </div>
+        </div>
+    </header>
 
-<header>
-    <h1>Ordering System</h1>
-</header>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2 class="hero-title">Your Style, Your Way</h2>
+                <p class="hero-subtitle">Discover the latest in sneakers, skateboards, and streetwear</p>
+                <div class="hero-buttons">
+                    <a href="shop.html" class="btn btn-primary">Shop Now</a>
+                    <a href="sales.html" class="btn btn-secondary">View Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<div class="container">
+    <!-- Featured Categories -->
+    <section class="categories">
+        <div class="container">
+            <h2 class="section-title">Shop by Category</h2>
+            <div class="category-grid">
+                <a href="shop.html?type=Sneakers" class="category-card">
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500" alt="Sneakers">
+                    <h3>Sneakers</h3>
+                </a>
+                <a href="shop.html?type=Skateboards" class="category-card">
+                    <img src="https://images.unsplash.com/photo-1770344238300-1929f7895369?w=500" alt="Skateboards">
+                    <h3>Skateboards</h3>
+                </a>
+                <a href="shop.html?type=Apparel" class="category-card">
+                    <img src="https://images.unsplash.com/photo-1588011025378-15f4778d2558?w=500" alt="Apparel">
+                    <h3>Apparel</h3>
+                </a>
+            </div>
+        </div>
+    </section>
 
-    <!-- ADD USER -->
-    <h2>Add User</h2>
-    <form method="POST" action="process.php">
-        <input type="text" name="name" placeholder="Name" required>
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="text" name="password" placeholder="Password" required>
-        <button name="add_user">Add User</button>
-    </form>
+    <!-- Featured Products -->
+    <section class="featured-products">
+        <div class="container">
+            <h2 class="section-title">Featured Products</h2>
+            <div class="product-grid" id="featuredProducts">
+                <!-- Products will be loaded here via JavaScript -->
+            </div>
+        </div>
+    </section>
 
-    <!-- ADD PRODUCT -->
-    <h2>Add Product</h2>
-    <form method="POST" action="process.php">
-        <input type="text" name="name" placeholder="Product Name" required>
-        <input type="number" step="0.01" name="price" placeholder="Price" required>
-        <input type="number" name="stock" placeholder="Stock" required>
-        <button name="add_product">Add Product</button>
-    </form>
+    <!-- Bundles Promo -->
+    <section class="bundles-promo">
+        <div class="container">
+            <div class="promo-content">
+                <h2>Save Big with Bundle Deals</h2>
+                <p>Get curated product bundles at amazing prices</p>
+                <a href="bundles.html" class="btn btn-primary">View Bundles</a>
+            </div>
+        </div>
+    </section>
 
-    <!-- CREATE ORDER -->
-    <h2>Create Order</h2>
-    <form method="POST" action="process.php">
-        <select name="user_id">
-            <?php
-            $users = $conn->query("SELECT * FROM Users");
-            while ($row = $users->fetch_assoc()) {
-                echo "<option value='{$row['user_id']}'>{$row['name']}</option>";
-            }
-            ?>
-        </select>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>StreetStyle</h3>
+                    <p>Your one-stop shop for sneakers, skateboards, and streetwear in the Philippines.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="bundles.html">Bundles</a></li>
+                        <li><a href="sales.html">Sale</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Email: info@streetstyle.ph</p>
+                    <p>Phone: +63 123 456 7890</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 StreetStyle. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
-        <input type="number" step="0.01" name="total_amount" placeholder="Total Amount" required>
-        <button name="create_order">Create Order</button>
-    </form>
-
-    <!-- PRODUCTS DISPLAY -->
-    <h2>Products</h2>
-    <div class="grid">
-        <?php
-        $products = $conn->query("SELECT * FROM Products");
-        while ($row = $products->fetch_assoc()) {
-            echo "<div class='card'>
-                    <h3>{$row['name']}</h3>
-                    <p>₱{$row['price']}</p>
-                    <p>Stock: {$row['stock']}</p>
-                  </div>";
-        }
-        ?>
-    </div>
-
-    <!-- ORDERS TABLE -->
-    <h2>Orders</h2>
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>User</th>
-            <th>Date</th>
-            <th>Total</th>
-        </tr>
-
-        <?php
-        $orders = $conn->query("
-            SELECT o.order_id, u.name, o.order_date, o.total_amount
-            FROM Orders o
-            JOIN Users u ON o.user_id = u.user_id
-        ");
-
-        while ($row = $orders->fetch_assoc()) {
-            echo "<tr>
-                    <td>{$row['order_id']}</td>
-                    <td>{$row['name']}</td>
-                    <td>{$row['order_date']}</td>
-                    <td>₱{$row['total_amount']}</td>
-                  </tr>";
-        }
-        ?>
-    </table>
-
-</div>
-
+    <script src="js/main.js"></script>
+    <script src="js/home.js"></script>
 </body>
 </html>
